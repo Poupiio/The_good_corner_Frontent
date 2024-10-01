@@ -61,12 +61,12 @@ const CreateAd = () => {
             <textarea name="description" id="description" placeholder="Description..."></textarea>
          </label>
 <br />
-         {/* <select name="category" id="category">
+         <select name="category" id="category">
             <option value="">Choisissez une catégorie</option>
             {categories.map(category => (
                <option value={category.id} key={category.id}>{category.name}</option>
             ))}
-         </select> */}
+         </select>
 <br />
          <label htmlFor="price">Prix
             <input type="number" name="price" min="0" required />
@@ -81,12 +81,12 @@ const CreateAd = () => {
             <input type="text" name="location" placeholder="Paris" required />
          </label>
 <br />
-         {/* <h4>Souhaitez-vous ajouter un tag ?</h4>
+         <h4>Souhaitez-vous ajouter un tag ?</h4>
          {tags.map(tag => (
             <label htmlFor="tags">
                <input type="checkbox" name="tags" value={tag.id} />{tag.name}
             </label>
-         ))} */}
+         ))}
 
          <label htmlFor="owner">Adresse email
             <input type="email" name="owner" placeholder="john.doe@gmail.com" required />
