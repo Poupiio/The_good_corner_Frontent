@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AdCardProps } from "../components/AdCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -6,6 +6,7 @@ import { CategoryProps } from "../components/Category";
 
 const EditAd = () => {
    const { id } = useParams();
+   const navigate = useNavigate();
    const [ad, setAd] = useState({} as AdCardProps);
    const [categories, setCategories] = useState<CategoryProps[]>([]);
 
@@ -38,13 +39,13 @@ const EditAd = () => {
          <h1>Modifier {ad.title}</h1>
          <form method="post" onSubmit={handleUpdate}>
             <label htmlFor="title">Titre de l'annonce
-               <input className="text-field" type="text" name="title" placeholder="Titre de l'annonce" required />
+               <input className="text-field" type="text" name="title" placeholder="Titre de l'annonce" value={ad.title} required />
             </label>
             
             <br />
 
             <label htmlFor="description">Description
-               <textarea className="text-field" name="description" id="description" placeholder="Description..."></textarea>
+               <textarea className="text-field" name="description" id="description" placeholder="Description..." value={ad.description}></textarea>
             </label>
             
             <br />
@@ -59,27 +60,27 @@ const EditAd = () => {
             <br />
 
             <label htmlFor="price">Prix
-               <input className="text-field" type="number" name="price" min="0" required />
+               <input className="text-field" type="number" name="price" min="0" value={ad.price} required />
             </label>
             
             <br />
 
             {/* Provisoire pour le test ! */}
             <label htmlFor="picture">Entrez l'URL de votre image
-               <input className="text-field" type="text" name="picture" maxLength={2000} required />
+               <input className="text-field" type="text" name="picture" maxLength={2000} value={ad.picture} required />
             </label>
 
             <label htmlFor="location">Localisation
-               <input className="text-field" type="text" name="location" placeholder="Paris" required />
+               <input className="text-field" type="text" name="location" placeholder="Paris" value={ad.location} required />
             </label>
             
             <br />
             <label htmlFor="owner">Vendeur
-               <input className="text-field" type="text" name="owner" placeholder="Votre nom" required />
+               <input className="text-field" type="text" name="owner" placeholder="Votre nom" value={ad.owner} required />
             </label>
 
             <label htmlFor="createdAt">Date d'ajout
-               <input className="text-field" type="date" name="createdAt" />
+               <input className="text-field" type="date" name="createdAt" value={ad.createdAt} />
             </label>
 
             <button type="submit">Modifier</button>

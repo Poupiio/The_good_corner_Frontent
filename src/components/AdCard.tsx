@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export type AdCardProps = {
    id: number, 
@@ -17,13 +17,6 @@ export type AdCardProps = {
 }
 
 const AdCard = ({ id, title, picture, price, category }: AdCardProps) => {
-   const navigate = useNavigate(); 
-
-   // Redirection vers la page de modification de l'annonce
-   const handleUpdate = async () => {
-      navigate(`/ad/edit/${id}`);
-   }
-
    const handleDelete = async () => {
       try {
          axios.delete(`http://localhost:3000/ads/${id}`);
@@ -44,7 +37,7 @@ const AdCard = ({ id, title, picture, price, category }: AdCardProps) => {
                <div className="ad-card-category">
                   <p>{category.name}</p>
                </div>
-               <button className="button ad-card-update" onClick={handleUpdate}>Modifier</button>
+               <Link to={`ad/edit/${id}`} className="button ad-card-update">Modifier</Link>
                <button className="button ad-card-delete" onClick={handleDelete}>Supprimer</button>
             </div>
          </Link>
