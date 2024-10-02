@@ -17,6 +17,7 @@ import Services from "./pages/Services";
 import Holidays from "./pages/Holidays";
 import Counter from "./pages/Counter";
 import CreateAd from "./pages/CreateAd";
+import CreateCategory from "./pages/CreateCategory";
 
 function App() {
 	return (
@@ -26,6 +27,7 @@ function App() {
 				<Route path="about" element={<About />} />
 				<Route path="ad/:id" element={<AdDetails />} />
 				<Route path="ad/new" element={<CreateAd />} />
+				<Route path="category/new" element={<CreateCategory />} />
 				<Route path="category/furnishings" element={<Furnishings />} />
 				<Route path="category/electrical-appliances" element={<ElectricalAppliances />} />
 				<Route path="category/photography" element={<Photography />} />

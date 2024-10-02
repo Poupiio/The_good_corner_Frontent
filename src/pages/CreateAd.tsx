@@ -108,7 +108,7 @@ const CreateAd = () => {
             <input className="text-field" type="date" name="createdAt" />
          </label>
 
-         <button className="btn" type="submit">Créer</button>
+         <button className="button" type="submit">Créer</button>
       </form>
    );
 };

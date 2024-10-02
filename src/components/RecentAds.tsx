@@ -30,10 +30,12 @@ const RecentAds = () => {
                <div key={ad.id}>
                   <AdCard 
                      id={ad.id}
+                     title={ad.title}
+                     description={ad.description}
                      picture={ad.picture}
                      link={ad.link}
+                     location={ad.location}
                      price={ad.price}
-                     title={ad.title}
                      category={ad.category}
                   />
                   <button onClick={() => setTotal(total + ad.price)}>Add to total</button>
