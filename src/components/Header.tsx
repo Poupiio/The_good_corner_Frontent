@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Category, { CategoryProps } from "./Category";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
    const navigate = useNavigate();
@@ -23,7 +23,9 @@ const Header = () => {
       <header className="header">
          <div className="main-menu">
             <h1>
-               <a href="/" className="button logo link-button"><span className="mobile-short-label">TGC</span><span className="desktop-long-label">THE GOOD CORNER</span></a>
+               <Link to="/" className="button logo link-button">
+                  <span className="mobile-short-label">TGC</span><span className="desktop-long-label">THE GOOD CORNER</span>
+               </Link>
             </h1>
             <form
                className="text-field-with-button"
@@ -55,10 +57,10 @@ const Header = () => {
                   </svg>
                </button>
             </form>
-            <a href="/ad/new" className="button link-button">
+            <Link to="/ad/new" className="button link-button">
                <span className="mobile-short-label">Publier</span>
                <span className="desktop-long-label">Publier une annonce</span>
-            </a>
+            </Link>
          </div>
          <nav className="categories-navigation">
             {categories.map(cat => (

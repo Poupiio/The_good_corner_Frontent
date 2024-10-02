@@ -236,6 +236,39 @@ h1 {
   margin-right: 10px;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;  
+}
+
+.form label {
+  width: 100%;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Style des champs de saisie */
+.text-field {
+  width: 100%;
+  margin: 5px 0 15px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 8px;
+  border: 2px solid #ffa41b;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
 @media screen and (min-width: 720px) {
   .mobile-short-label {
     display: none;

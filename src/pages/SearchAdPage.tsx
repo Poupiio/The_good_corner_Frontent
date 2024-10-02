@@ -18,7 +18,7 @@ const SearchAdPage = () => {
 
    return (
       <>
-         <p>Search results for keyword {keyword}</p>
+         <p>Résultats correspondants à votre recherche "{keyword}"</p>
          <section className="recent-ads">
             {ads.map((ad) => (
                <div key={ad.id}>
