@@ -4,6 +4,7 @@ export type AdCardProps = {
    id: number, 
    title: string,
    description: string,
+   owner: string,
    picture: string,
    price: number,
    link: string,

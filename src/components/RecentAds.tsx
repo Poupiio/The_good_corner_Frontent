@@ -31,6 +31,7 @@ const RecentAds = () => {
                   <AdCard 
                      id={ad.id}
                      title={ad.title}
+                     owner={ad.owner}
                      description={ad.description}
                      picture={ad.picture}
                      link={ad.link}
