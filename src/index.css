@@ -152,16 +152,30 @@ h1 {
   font-weight: bold;
 }
 
+.ad-card-title .link-title {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.2s ease-in-out;
+}
+
+.ad-card-title .link-title:hover {
+  color: #c4801b;
+}
+
 .ad-card-price {
   font-weight: 700;
   color: #FFA41B;
+}
+
+.ad-card-content {
+  padding-bottom: 20px;
+  padding-left: 5px;
 }
 
 .ad-card-category {
   background: #FFA41B;
   width: fit-content;
   border-radius: 8px;
-  cursor: pointer;
 }
 
 .ad-card-category p {
@@ -169,20 +183,59 @@ h1 {
   font-weight: 500;
 }
 
+.ad-card-update, .ad-card-delete {
+  display: inline-block;
+}
+
+.ad-card-update {
+  margin-right: 10px;
+}
+
+.ad-details {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
+}
+
 .ad-details-image-container {
-  margin-inline-start: -24px;
-  margin-inline-end: -24px;
+  height: 250px;
+  overflow: hidden;
+  margin-top: 50px;
 }
  
 .ad-details-image {
-  width: 100%;
+  width: auto;
+  height: 100%;
+  object-fit: cover;
 }
- 
-.ad-details {
-  display: grid;
-  gap: 24px;
+
+.ad-details-title {
+  text-align: left;
 }
- 
+
+.ad-details-price {
+  font-size: 1.2rem;
+}
+
+.ad-details-description p {
+  margin: 0;
+}
+
+.ad-details-location {
+  margin: 15px 0;
+}
+
+.ad-details-location .fa-location-dot {
+  margin-right: 10px;
+  color: #FFA41B;
+}
+
+.mailBtn i {
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
 @media screen and (min-width: 720px) {
   .mobile-short-label {
     display: none;

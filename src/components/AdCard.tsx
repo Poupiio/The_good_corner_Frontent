@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 export type AdCardProps = {
    id: number, 
@@ -7,26 +8,20 @@ export type AdCardProps = {
    owner: string,
    picture: string,
    price: number,
-   link: string,
    location: string,
+   createdAt: Date,
    category: {
       id: number,
       name: string
    }
 }
 
-const AdCard = ({ id, title, picture, price, link, category }: AdCardProps) => {
+const AdCard = ({ id, title, picture, price, category }: AdCardProps) => {
+   const navigate = useNavigate(); 
 
+   // Redirection vers la page de modification de l'annonce
    const handleUpdate = async () => {
-      console.log(id);
-      
-      // try {
-         
-      //    axios.put(`http://localhost:3000/ads/${id}`);
-      // } catch (err) {
-      //    console.log("error: ", err);
-      // }
-      
+      navigate(`/ad/edit/${id}`);
    }
 
    const handleDelete = async () => {
@@ -39,18 +34,20 @@ const AdCard = ({ id, title, picture, price, link, category }: AdCardProps) => {
 
    return (
       <div className="ad-card-container">
-         <a className="ad-card-link" href={link}>
+         <Link className="ad-card-link" to={`/ad/${id}`}>
             <img className="ad-card-image" src={picture} />
             <div className="ad-card-text">
                <div className="ad-card-title">{title}</div>
                <div className="ad-card-price">{price} €</div>
             </div>
-            <div className="ad-card-category">
-               <p>{category.name}</p>
+            <div className="ad-card-content">
+               <div className="ad-card-category">
+                  <p>{category.name}</p>
+               </div>
+               <button className="button ad-card-update" onClick={handleUpdate}>Modifier</button>
+               <button className="button ad-card-delete" onClick={handleDelete}>Supprimer</button>
             </div>
-         </a>
-         <button className="button ad-card-update" onClick={handleUpdate}>Modifier</button>
-         <button className="button ad-card-delete" onClick={handleDelete}>Supprimer</button>
+         </Link>
       </div>
    );
 };

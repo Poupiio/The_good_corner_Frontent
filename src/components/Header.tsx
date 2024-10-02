@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import Category, { CategoryProps } from "./Category";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+   const navigate = useNavigate();
    const [categories, setCategories] = useState<CategoryProps[]>([]);
 
    useEffect(() => {
@@ -23,8 +25,19 @@ const Header = () => {
             <h1>
                <a href="/" className="button logo link-button"><span className="mobile-short-label">TGC</span><span className="desktop-long-label">THE GOOD CORNER</span></a>
             </h1>
-            <form className="text-field-with-button">
-               <input className="text-field main-search-field" type="search" />
+            <form
+               className="text-field-with-button"
+               onSubmit={(e) => {
+                  e.preventDefault();
+                  const form = e.target;
+                  const formData = new FormData(form as HTMLFormElement);
+      
+                  const formJson = Object.fromEntries(formData.entries());
+                  console.log(formJson);
+                  navigate(`/ad/search/${formJson.keyword}`);
+               }}
+            >
+               <input className="text-field main-search-field" type="search" name="keyword" />
                <button className="button button-primary">
                   <svg
                      aria-hidden="true"

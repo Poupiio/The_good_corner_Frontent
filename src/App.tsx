@@ -18,6 +18,8 @@ import Holidays from "./pages/Holidays";
 import Counter from "./pages/Counter";
 import CreateAd from "./pages/CreateAd";
 import CreateCategory from "./pages/CreateCategory";
+import EditAd from "./pages/EditAd";
+import SearchAdPage from "./pages/SearchAdPage";
 
 function App() {
 	return (
@@ -26,7 +28,9 @@ function App() {
 				<Route index element={<RecentAds />} />
 				<Route path="about" element={<About />} />
 				<Route path="ad/:id" element={<AdDetails />} />
+				<Route path="ad/search/:keyword" element={<SearchAdPage />} />
 				<Route path="ad/new" element={<CreateAd />} />
+				<Route path="ad/edit/:id" element={<EditAd />} />
 				<Route path="category/new" element={<CreateCategory />} />
 				<Route path="category/furnishings" element={<Furnishings />} />
 				<Route path="category/electrical-appliances" element={<ElectricalAppliances />} />

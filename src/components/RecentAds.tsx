@@ -5,7 +5,7 @@ import axios from "axios";
 const RecentAds = () => {
    
    const [total, setTotal] = useState(0);
-   const [ads, setAds] = useState<AdCardProps[]>([]);
+   const [ads, setAds] = useState([] as AdCardProps[]);
 
    useEffect(() => {
       const fetchData = async () => {
@@ -34,9 +34,9 @@ const RecentAds = () => {
                      owner={ad.owner}
                      description={ad.description}
                      picture={ad.picture}
-                     link={ad.link}
                      location={ad.location}
                      price={ad.price}
+                     createdAt={ad.createdAt}
                      category={ad.category}
                   />
                   <button onClick={() => setTotal(total + ad.price)}>Add to total</button>
