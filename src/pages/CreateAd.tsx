@@ -50,46 +50,62 @@ const CreateAd = () => {
             console.log(formJson);
 
             // Envoi des données au back
-            fetch('http://localhost:3000/ads', { method: form.method, body: formData });
+            axios.post("http://localhost:3000/ads", formJson);
          }}
       >
          <label htmlFor="title">Titre de l'annonce
-            <input type="text" name="title" placeholder="Titre de l'annonce" required />
+            <input className="text-field" type="text" name="title" placeholder="Titre de l'annonce" required />
          </label>
-<br />
+         
+         <br />
+
          <label htmlFor="description">Description
-            <textarea name="description" id="description" placeholder="Description..."></textarea>
+            <textarea className="text-field" name="description" id="description" placeholder="Description..."></textarea>
          </label>
-<br />
-         <select name="category" id="category">
+         
+         <br />
+
+         <select className="text-field" name="category" id="category">
             <option value="">Choisissez une catégorie</option>
             {categories.map(category => (
                <option value={category.id} key={category.id}>{category.name}</option>
             ))}
          </select>
-<br />
+         
+         <br />
+
          <label htmlFor="price">Prix
-            <input type="number" name="price" min="0" required />
+            <input className="text-field" type="number" name="price" min="0" required />
          </label>
-<br />
+         
+         <br />
+
          {/* Provisoire pour le test ! */}
          <label htmlFor="picture">Entrez l'URL de votre image
-            <input type="text" name="picture" maxLength={2000} required />
+            <input className="text-field" type="text" name="picture" maxLength={2000} required />
          </label>
 
          <label htmlFor="location">Localisation
-            <input type="text" name="location" placeholder="Paris" required />
+            <input className="text-field" type="text" name="location" placeholder="Paris" required />
          </label>
-<br />
+         
+         <br />
+
          <h4>Souhaitez-vous ajouter un tag ?</h4>
          {tags.map(tag => (
             <label htmlFor="tags">
-               <input type="checkbox" name="tags" value={tag.id} />{tag.name}
+               <input className="text-field" type="checkbox" name="tags" value={tag.id} />{tag.name}
             </label>
          ))}
 
-         <label htmlFor="owner">Adresse email
-            <input type="email" name="owner" placeholder="john.doe@gmail.com" required />
+         <br />
+
+         <label htmlFor="owner">Vendeur
+            <input className="text-field" type="text" name="owner" placeholder="Votre nom" required />
+         </label>
+
+         <label htmlFor="createdAt">Date d'ajout
+            <input className="text-field" type="date" name="createdAt" />
          </label>
 
          <button className="btn" type="submit">Créer</button>
