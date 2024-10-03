@@ -20,6 +20,7 @@ import CreateAd from "./pages/CreateAd";
 import CreateCategory from "./pages/CreateCategory";
 import EditAd from "./pages/EditAd";
 import SearchAdPage from "./pages/SearchAdPage";
+import AdsByCategory from "./pages/AdsByCategory";
 
 function App() {
 	return (
@@ -45,6 +46,7 @@ function App() {
 				<Route path="category/services" element={<Services />} />
 				<Route path="category/holidays" element={<Holidays />} />
 				<Route path="counter" element={<Counter />} />
+				<Route path="ad/category/:name" element={<AdsByCategory />} />
 			</Route>
 		</Routes>
 	);

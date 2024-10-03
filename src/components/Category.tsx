@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
-
+import { Link,  } from "react-router-dom";
 export type CategoryProps = { id: number, name: string };
 
-const Category = ({ id, name }: CategoryProps) => {
+const Category = ({ name }: CategoryProps) => {
    return (
       <>
-         <Link to={`/category/${id}`} className="category-navigation-link">{name}</Link>
+         <Link to={`ad/category/${name}`} className="category-navigation-link">{name}</Link>
       </>
    );
 };
