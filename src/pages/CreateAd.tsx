@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { toast } from "react-toastify";
 // import { TagProps } from "../components/Tag";
 
-type FormValues = {
+export type FormValues = {
    title: string
    description: string,
    category: number,
@@ -20,8 +20,6 @@ type FormValues = {
 const CreateAd = () => {
    const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
 
-   console.log(errors);
-   
    const navigate = useNavigate();
    const [categories, setCategories] = useState<CategoryProps[]>([]);
    // const [tags, setTags] = useState<TagProps[]>([]);
@@ -33,7 +31,7 @@ const CreateAd = () => {
          
          navigate("/");
       } catch (error) {
-         console.error("Erreur lors de la création de l'annonce :", error);
+         console.error("Erreur lors de la création de l'annonce :", error, errors);
       }
    }
    
