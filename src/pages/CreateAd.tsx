@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { CategoryProps } from "../components/Category";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form"
+import { toast } from "react-toastify";
 // import { TagProps } from "../components/Tag";
 
 type FormValues = {
@@ -28,7 +29,8 @@ const CreateAd = () => {
    const onSubmit: SubmitHandler<FormValues> = async (data) => {
       try {
          await axios.post("http://localhost:3000/ads", data);
-   
+         toast.success("Ad has been added");
+         
          navigate("/");
       } catch (error) {
          console.error("Erreur lors de la création de l'annonce :", error);
@@ -54,21 +56,6 @@ const CreateAd = () => {
       <form
          method="post"
          className="form"
-         // onSubmit={(e) => {
-         //    e.preventDefault();
-
-         //    // Récupération des données
-         //    const form = e.target as HTMLFormElement;
-         //    const formData = new FormData(form as HTMLFormElement);
-            
-         //    // Conversion des données au format json
-         //    // Utilisation de Object.fromEntries() pour ne pas avoir à récupérer manuellement chaque champ du formulaire
-         //    const formJson = Object.fromEntries(formData.entries());
-
-         //    // Envoi des données au back
-         //    axios.post("http://localhost:3000/ads", formJson);
-         //    navigate("/");
-         // }}
          onSubmit={handleSubmit(onSubmit)}
       >
          <label htmlFor="title">Quel est le titre de votre annonce ?
