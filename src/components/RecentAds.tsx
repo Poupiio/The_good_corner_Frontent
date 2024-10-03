@@ -12,8 +12,6 @@ const RecentAds = () => {
          try {
             const result = await axios.get<AdCardProps[]>("http://localhost:3000/ads");
             setAds(result.data);
-            console.log(result.data);
-            
          } catch (err) {
             console.log("error", err);
          }
