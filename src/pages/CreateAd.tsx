@@ -13,6 +13,7 @@ export type FormValues = {
    price: number,
    picture: string,
    location: string,
+   tags: number[],
    owner: string,
    createdAt: string
 }
