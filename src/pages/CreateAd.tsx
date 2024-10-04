@@ -4,7 +4,7 @@ import { CategoryProps } from "../components/Category";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form"
 import { toast } from "react-toastify";
-// import { TagProps } from "../components/Tag";
+import { TagProps } from "../components/Tag";
 
 export type FormValues = {
    title: string
@@ -22,7 +22,7 @@ const CreateAd = () => {
 
    const navigate = useNavigate();
    const [categories, setCategories] = useState<CategoryProps[]>([]);
-   // const [tags, setTags] = useState<TagProps[]>([]);
+   const [tags, setTags] = useState<TagProps[]>([]);
 
    const onSubmit: SubmitHandler<FormValues> = async (data) => {
       try {
@@ -41,13 +41,13 @@ const CreateAd = () => {
          setCategories(result.data);
       }
 
-      // const fetchTags = async () => {
-      //    const result = await axios.get("http://localhost:3000/tags");
-      //    setTags(result.data);
-      // }
+      const fetchTags = async () => {
+         const result = await axios.get("http://localhost:3000/tags");
+         setTags(result.data);
+      }
 
       fetchCategories();
-      // fetchTags();
+      fetchTags();
    }, []);
 
    return (
@@ -57,7 +57,7 @@ const CreateAd = () => {
          onSubmit={handleSubmit(onSubmit)}
       >
          <label htmlFor="title">Quel est le titre de votre annonce ?
-            <input className="text-field" type="text" {...register("title", { required: true })} placeholder="Titre de l'annonce" />
+            <input className="text-field" type="text" {...register("title", { required: "Le titre est obligatoire" })} placeholder="Titre de l'annonce" />
          </label>
          
          <label htmlFor="description">Description
@@ -77,19 +77,25 @@ const CreateAd = () => {
          
          {/* Provisoire pour le test ! */}
          <label htmlFor="picture">Entrez l'URL de votre image
-            <input className="text-field" type="text" {...register("picture", { required: true })} maxLength={2000} />
+            <input className="text-field" type="text" {...register("picture", {
+               required: true,
+               maxLength: { value: 2000, message: "Maximum 2000 characters" },
+               })}
+            />
          </label>
 
          <label htmlFor="location">Localisation
             <input className="text-field" type="text" {...register("location", { required: true })} placeholder="Paris" />
          </label>
          
-         {/* <h4>Souhaitez-vous ajouter un tag ?</h4>
-         {tags.map(tag => (
-            <label htmlFor="tags">
-               <input className="text-field" type="checkbox" name="tags" value={tag.id} />{tag.name}
-            </label>
-         ))} */}
+         <h4>Souhaitez-vous ajouter un ou plusieurs tag(s) ?</h4>
+         <div className="checkbox-container">
+            {tags.map(tag => (
+               <label htmlFor={`${tag.id}`}>
+                  <input className="checkbox" type="checkbox" name="tags" id={`${tag.id}`} value={tag.id} />{tag.name}
+               </label>
+            ))}
+         </div>
 
          <label htmlFor="owner">Vendeur
             <input className="text-field" type="text" {...register("owner", { required: true })} placeholder="Votre nom" />
@@ -99,7 +105,7 @@ const CreateAd = () => {
             <input className="text-field" type="date" {...register("createdAt")} />
          </label>
 
-         <button className="button" type="submit">Créer</button>
+         <button className="button create-ad" type="submit">Créer</button>
       </form>
    );
 };

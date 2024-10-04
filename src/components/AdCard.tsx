@@ -28,7 +28,9 @@ const AdCard = ({ id, title, picture, price, category }: AdCardProps) => {
    return (
       <div className="ad-card-container">
          <Link className="ad-card-link" to={`/ad/${id}`}>
-            <img className="ad-card-image" src={picture} />
+            <div className="ad-card-image-container">
+               <img className="ad-card-image" src={picture} />
+            </div>
             <div className="ad-card-text">
                <div className="ad-card-title">{title}</div>
                <div className="ad-card-price">{price} €</div>
