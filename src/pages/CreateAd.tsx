@@ -27,7 +27,12 @@ const CreateAd = () => {
 
    const onSubmit: SubmitHandler<FormValues> = async (data) => {
       try {
-         await axios.post("http://localhost:3000/ads", data);
+         const dataForBackend = {
+            ...data,
+            tags: data.tags.map((tag) => ({ id: tag })),
+         };
+         
+         await axios.post("http://localhost:3000/ads", dataForBackend);
          toast.success("Ad has been added");
          
          navigate("/");
@@ -93,7 +98,7 @@ const CreateAd = () => {
          <div className="checkbox-container">
             {tags.map(tag => (
                <label htmlFor={`${tag.id}`}>
-                  <input className="checkbox" type="checkbox" name="tags" id={`${tag.id}`} value={tag.id} />{tag.name}
+                  <input className="checkbox" type="checkbox" id={`${tag.id}`} value={tag.id} {...register("tags")} />{tag.name}
                </label>
             ))}
          </div>
