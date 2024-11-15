@@ -36,6 +36,7 @@ const RecentAds = () => {
                      price={ad.price}
                      createdAt={ad.createdAt}
                      category={ad.category}
+                     tags={ad.tags}
                   />
                   <button onClick={() => setTotal(total + ad.price)}>Add to total</button>
                </div>

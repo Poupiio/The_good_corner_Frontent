@@ -25,6 +25,21 @@ const CreateAd = () => {
    const [categories, setCategories] = useState<CategoryProps[]>([]);
    const [tags, setTags] = useState<TagProps[]>([]);
 
+   useEffect(() => {
+      const fetchCategories = async () => {
+         const result = await axios.get("http://localhost:3000/categories");
+         setCategories(result.data);
+      }
+      
+      const fetchTags = async () => {
+         const result = await axios.get("http://localhost:3000/tags");
+         setTags(result.data);
+      }
+      
+      fetchCategories();
+      fetchTags();
+   }, []);
+   
    const onSubmit: SubmitHandler<FormValues> = async (data) => {
       try {
          const dataForBackend = {
@@ -40,21 +55,6 @@ const CreateAd = () => {
          console.error("Erreur lors de la création de l'annonce :", error, errors);
       }
    }
-   
-   useEffect(() => {
-      const fetchCategories = async () => {
-         const result = await axios.get("http://localhost:3000/categories");
-         setCategories(result.data);
-      }
-
-      const fetchTags = async () => {
-         const result = await axios.get("http://localhost:3000/tags");
-         setTags(result.data);
-      }
-
-      fetchCategories();
-      fetchTags();
-   }, []);
 
    return (
       <form
